@@ -1,0 +1,21 @@
+---
+ - name: deploy project on docker cluster
+   hosts: manager
+   ignore_errors: yes
+   tasks:
+     - name: check all node info
+       shell: docker node ls
+       register: a
+     - name: display node details
+       debug:
+          msg: "{{ a.stdout }}"
+     - name: remove existing service
+       shell: docker service rm myweb
+     - name: deploy container on cluster
+       shell: docker service create -d -p 80:80 --replicas=7  --name myweb  diptimokat/docker_swarm_devops_project:v1
+     - name: check service info
+       shell: docker service ps myweb
+       register: b
+     - name: display service info
+       debug:
+          msg: "{{ b.stdout }}"

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Deployment Project</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #17202a;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .intro h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .workflow {
+            background: white;
+            margin-top: 40px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .workflow h2 {
+            margin-bottom: 20px;
+        }
+
+        .flow {
+            font-size: 18px;
+            line-height: 2;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 50px;
+            background: #17202a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>DevOps Deployment Project</h1>
+        <p>Automated Application Deployment using AWS & DevOps Tools</p>
+    </header>
+
+    <div class="container">
+
+        <div class="intro">
+            <h2>Welcome to My DevOps Project</h2>
+            <p>
+                This application demonstrates an automated DevOps deployment
+                workflow from source code to a Docker Swarm cluster.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>GitHub</h3>
+                <p>
+                    Source code and configuration files are maintained
+                    in GitHub repositories.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Jenkins</h3>
+                <p>
+                    Jenkins automates the CI/CD workflow and executes
+                    infrastructure and deployment jobs.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Terraform</h3>
+                <p>
+                    Terraform provisions the required AWS infrastructure
+                    using Infrastructure as Code.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Ansible</h3>
+                <p>
+                    Ansible automates server configuration and Docker
+                    Swarm setup.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Docker</h3>
+                <p>
+                    The application is packaged into a Docker image
+                    for consistent deployment.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Docker Swarm</h3>
+                <p>
+                    Docker Swarm manages and runs multiple replicas
+                    of the application across worker nodes.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="workflow">
+
+            <h2>Deployment Workflow</h2>
+
+            <div class="flow">
+                Developer → GitHub → Jenkins → Terraform
+                <br>
+                ↓
+                <br>
+                AWS Infrastructure → Ansible → Docker Swarm
+                <br>
+                ↓
+                <br>
+                Docker Hub → Application Deployment
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>DevOps Project | AWS | Jenkins | Terraform | Ansible | Docker</p>
+    </footer>
+
+</body>
+</html>

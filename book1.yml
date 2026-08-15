@@ -1,0 +1,61 @@
+---
+ - name: manage docker swarm
+   hosts: manager
+   ignore_errors: yes
+   tasks:
+     - name: install docker
+       yum:
+         name: docker
+         state: present
+     - name: start and enable docker
+       service:
+         name: docker
+         state: started
+         enabled: yes
+     - name: add itadmin into docker group
+       shell: gpasswd -a itadmin docker
+     - name: initialize docker swarm
+       shell: docker swarm init
+     - name: check worker join token
+       shell: docker  swarm  join-token  worker 
+       register: token
+     - name: Save token to local file
+       delegate_to: localhost
+       copy:
+         content: "{{ token.stdout }}"
+         dest: "/tmp/docker_worker_token.txt"
+     - name: filter token
+       delegate_to: localhost
+       shell: grep docker /tmp/docker_worker_token.txt > /home/itadmin/punepro/token.sh
+ - name: add workers into swarm
+   hosts: worker
+   ignore_errors: yes
+   tasks:
+     - name: install docker
+       yum:
+         name: docker
+         state: present
+     - name: start and enable docker
+       service:
+         name: docker
+         state: started
+         enabled: yes
+     - name: add itadmin into docker group
+       shell: gpasswd -a itadmin docker
+     - name: create directory to store token
+       file:
+         path: /tokenhome
+         state: directory
+         owner: itadmin
+         group: itadmin
+     - name: transfer token to worker
+       copy:
+         src: token.sh
+         dest: /tokenhome/
+         mode: '755'
+     - name: execute docker join token
+       shell: cd /tokenhome/; sh token.sh
+       register: m
+     - name: display success msg
+       debug:
+         msg: "{{ m }}"
